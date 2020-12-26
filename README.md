@@ -10,3 +10,5 @@
 - reset your data
 
 all of that things are saved in your browser localStorage automaticaly, and it remain even if close browser!
+
+try it! https://soonitoon.github.io/momenton/
