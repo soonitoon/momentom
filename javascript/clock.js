@@ -13,7 +13,7 @@ function getTime() {
   let clockSet = JSON.parse(localStorage.getItem(CLOCKSET_LS));
   if (clockSet === false) {
     clockTitle.innerText = `${hours < 10 ? `0${hours}` : hours}:${
-    minutes < 10 ? `1${minutes}` : minutes
+    minutes < 10 ? `0${minutes}` : minutes
     }:${seconds < 10 ? `0${seconds}` : seconds}`;
   } else {
     if (hours === 0) {
@@ -22,7 +22,7 @@ function getTime() {
       hours = hours - 12
     }
     clockTitle.innerText = `${hours}:${
-    minutes < 10 ? `1${minutes}` : minutes
+    minutes < 10 ? `0${minutes}` : minutes
     }:${seconds < 10 ? `0${seconds}` : seconds}`;
   }
 }
