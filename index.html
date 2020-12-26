@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Momuntom</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <a href="https://google.com/">google</a>
+    <div class="js-clock clock"> <!--작명 센스 :D-->
+        <div class="dummy"></div>
+        <h1>00:00</h1>
+        <button class="js-setClock">24H</button>
+    </div>
+    <form class="js-form form">
+        <label for="name">name :</label>
+        <input type="text" name="name" autocomplete="off">
+    </form>
+    <h4 class="js-greetings greetings"></h4>
+    <hr>
+    <form class="js-toDoForm">
+        <label for="todo" >toDo :</label>
+        <input type="text" name="todo" autocomplete="off">
+    </form>
+    <ul class="js-toDoList"></ul>
+    <span class="js-weather"></span>
+    <button class="popUpMoreBtn">more</button>
+    <ul class="moreWeather hidden">
+        <button class="popDownMoreBtn">X</button>
+        <li class="feels_like"></li>
+        <li class="humidity"></li>
+        <li class="temp"></li>
+        <li class="temp_max"></li>
+        <li class="temp_min"></li>
+    </ul>
+    <button class="js-reset">reset</button>
+    <button class="js-popUp">status</button>
+    <ul class="popUpWindow hidden">
+        <button class="js-popDown">X</button>
+        <li class="js-name"></li>
+        <li class="js-clockSet"></li>
+        <li class="js-location"></li>
+        <li>The Momentom* is your life partner.</li>
+        <li class="discription">* Momentom is replica of Momentum Chrome Extension</li>
+    </ul>
+    <div class="css-layer"></div>
+    <script src="/javascript/clock.js"></script>
+    <script src="/javascript/gretting.js"></script>
+    <script src="/javascript/todo.js"></script>
+    <script src="/javascript/weather.js"></script>
+    <script src="/javascript/reset.js"></script>
+    <script src="/javascript/popupStatus.js"></script>
+    <script src="/javascript/popupWeather.js"></script>
+    <script src="/javascript/bg.js"></script>
+</body>
+</html>
