@@ -3,7 +3,7 @@ const clockContainer = document.querySelector(".js-clock"),
 
 const btn = document.querySelector(".js-setClock");
 
-const CLOCKSET_LS = "clockSet"
+const CLOCKSET_LS = "clockSet";
 
 function getTime() {
   const date = new Date();
@@ -13,16 +13,16 @@ function getTime() {
   let clockSet = JSON.parse(localStorage.getItem(CLOCKSET_LS));
   if (clockSet === false) {
     clockTitle.innerText = `${hours < 10 ? `0${hours}` : hours}:${
-    minutes < 10 ? `1${minutes}` : minutes
+      minutes < 10 ? `0${minutes}` : minutes
     }:${seconds < 10 ? `0${seconds}` : seconds}`;
   } else {
     if (hours === 0) {
-      hours = 12
+      hours = 12;
     } else if (hours > 12) {
-      hours = hours - 12
+      hours = hours - 12;
     }
     clockTitle.innerText = `${hours}:${
-    minutes < 10 ? `1${minutes}` : minutes
+      minutes < 10 ? `0${minutes}` : minutes
     }:${seconds < 10 ? `0${seconds}` : seconds}`;
   }
 }
