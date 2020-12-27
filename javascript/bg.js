@@ -1,26 +1,20 @@
 const body = document.querySelector("body");
-const changeBtn = document.querySelector(".js-changeBg");
+const UNSPLASH_API_KEY = "PDe-zjoECeto35laG7vlHXqRbi72rij-hMVKcZNrFjk";
+const UNSPLASH_URL = `https://api.unsplash.com/photos/random/?client_id=${UNSPLASH_API_KEY}&query=landscape`;
 
-function paintImage() {
-    const image = new Image();
-    image.src = `https://source.unsplash.com/1920x1080/?mountain`;
-    image.classList.add("bgImage");
-    body.appendChild(image);
+function getImage() {
+    fetch(UNSPLASH_URL)
+        .then((response) => response.json())
+        .then((json) => {
+            const url = json.urls.full;
+            if (url) {
+                const img = new Image();
+                img.src = url;
+                body.appendChild(img);
+            } else {
+                getImage();
+            }     
+    });
 }
 
-function changeBg() {
-    img = document.querySelector(".bgImage");
-    body.removeChild(img);
-    paintImage();
-}
-
-function initChangeBtn() {
-    changeBtn.addEventListener("click", changeBg);
-}
-
-function init() {
-    paintImage();
-    initChangeBtn();
-}
-
-init();
+ getImage();
