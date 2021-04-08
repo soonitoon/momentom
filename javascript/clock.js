@@ -34,15 +34,14 @@ function saveClockSetting(clockSet) {
 function handleBtn() {
   let clockSet = JSON.parse(localStorage.getItem(CLOCKSET_LS));
   if (clockSet === true) {
-    clockSet = false;
+    saveClockSetting(false);
     btn.innerText = "24H";
     getTime();
   } else {
-    clockSet = true;
+    saveClockSetting(true);
     btn.innerText = "12H";
     getTime();
   }
-  saveClockSetting(clockSet);
 }
 
 function init() {
