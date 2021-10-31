@@ -1,0 +1,55 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: set env
+        env:
+          UNSPLASH_API_KEY: ${{ secrets.UNSPLASH_API_KEY }}
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+
+        run: |
+          echo "UNSPLASH_API_KEY=$UNSPLASH_API_KEY" >> .env
+          echo "OPENWEATHER_API_KEY=$OPENWEATHER_API_KEY" >> .env
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build webpack
+        run: yarn run build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Download artifact
+        uses: actions/download-artifact@master
+        with:
+          name: dist
+          path: dist
+
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_MOMENTOM_70CA6 }}"
+          channelId: live
+          projectId: momentom-70ca6
